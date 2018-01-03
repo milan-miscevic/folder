@@ -1,0 +1,19 @@
+{
+    "name": "mmm-folder",
+    "autoload": {
+        "psr-4": {
+            "Mmm\\Folder\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MmmTest\\Folder\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6"
+    },
+    "scripts": {
+        "test": "phpunit tests"
+    }
+}
