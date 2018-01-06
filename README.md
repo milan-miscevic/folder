@@ -17,6 +17,8 @@ $af->getAbsoluteFiles(); // returns list of files with absolute paths
 $asf = new ActiveSubFolder(__DIR__, '.');
 $asf->getFolders();
 $asf->getAbsoluteFolders();
+$asf->getRelativeFolders(); // returns list of folders with relative paths to base folder
 $asf->getFiles();
 $asf->getAbsoluteFiles();
+$asf->getRelativeFiles(); // returns list of files with relative paths to base folder
 ```
