@@ -33,9 +33,9 @@ abstract class FolderOperations
 
         foreach (scandir($this->getPath()) as $entry) {
             if (is_dir(($this->absolutePather)($entry))) {
-                $this->folders[] = $entry;
+                $this->folders[$entry] = $entry;
             } else {
-                $this->files[] = $entry;
+                $this->files[$entry] = $entry;
             }
         }
     }
