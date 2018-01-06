@@ -13,10 +13,10 @@ use PHPUnit\Framework\TestCase;
 class FolderTest extends TestCase
 {
     private $dummy1Folder = 'dummy1';
-    private $dummy1Folders = ['.', '..', 'subdummy1'];
+    private $dummy1Folders = ['subdummy1'];
     private $dummy1Files = ['dummy1.txt'];
     private $subdummy1Folder = 'subdummy1';
-    private $subdummy1Folders = ['.', '..'];
+    private $subdummy1Folders = [];
     private $subdummy1Files = ['subdummy1.txt'];
 
     public function testFolder()
@@ -27,8 +27,8 @@ class FolderTest extends TestCase
 
         $this->assertEquals($af->getCurrent(), $path);
         $this->assertEquals($af->getPath(), $path);
-        $this->assertEquals($af->getFolders(), $this->dummy1Folders);
-        $this->assertEquals($af->getFiles(), $this->dummy1Files);
+        $this->assertEquals($af->getFolders(), array_combine($this->dummy1Folders, $this->dummy1Folders));
+        $this->assertEquals($af->getFiles(), array_combine($this->dummy1Files, $this->dummy1Files));
     }
 
     public function testNonFoundFolder()
@@ -48,8 +48,8 @@ class FolderTest extends TestCase
         $this->assertEquals($asf->getBase(), $base);
         $this->assertEquals($asf->getCurrent(), $current);
         $this->assertEquals($asf->getPath(), $base . DIRECTORY_SEPARATOR . $current);
-        $this->assertEquals($asf->getFolders(), $this->subdummy1Folders);
-        $this->assertEquals($asf->getFiles(), $this->subdummy1Files);
+        $this->assertEquals($asf->getFolders(), array_combine($this->subdummy1Folders, $this->subdummy1Folders));
+        $this->assertEquals($asf->getFiles(), array_combine($this->subdummy1Files, $this->subdummy1Files));
     }
 
     public function testNotFoundSubFolder()
