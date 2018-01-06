@@ -38,6 +38,9 @@ abstract class FolderOperations
                 $this->files[$entry] = $entry;
             }
         }
+
+        unset($this->folders['.']);
+        unset($this->folders['..']);
     }
 
     public function getFolders()
