@@ -10,6 +10,8 @@ class ActiveFolder extends FolderOperations
 
     public function __construct($current = '.')
     {
+        parent::__construct();
+
         $this->setCurrent($current);
     }
 
@@ -21,7 +23,7 @@ class ActiveFolder extends FolderOperations
             throw new NotFoundException();
         }
 
-        $this->markUnscanned();
+        $this->reset();
     }
 
     public function getCurrent()

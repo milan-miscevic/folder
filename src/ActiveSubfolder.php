@@ -9,9 +9,14 @@ class ActiveSubfolder extends FolderOperations
 {
     protected $base;
     protected $current;
+    protected $relativePather;
 
     public function __construct($base = '.', $current = '.')
     {
+        parent::__construct();
+
+        $this->relativePather = new PrependPath();
+
         $this->setBase($base);
         $this->setCurrent($current);
     }
@@ -24,7 +29,7 @@ class ActiveSubfolder extends FolderOperations
             throw new NotFoundException();
         }
 
-        $this->markUnscanned();
+        $this->reset();
     }
 
     public function getBase()
@@ -46,12 +51,29 @@ class ActiveSubfolder extends FolderOperations
 
         $this->current = (string) substr($path, strlen($this->base) + 1);
 
-        $this->markUnscanned();
+        $this->reset();
     }
 
     public function getCurrent()
     {
         return $this->current;
+    }
+
+    protected function reset()
+    {
+        parent::reset();
+
+        $this->relativePather->setPath($this->current);
+    }
+
+    public function getRelativeFolders()
+    {
+        return array_map($this->relativePather, $this->getFolders());
+    }
+
+    public function getRelativeFiles()
+    {
+        return array_map($this->relativePather, $this->getFiles());
     }
 
     public function getPath()

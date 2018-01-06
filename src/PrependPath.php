@@ -6,7 +6,7 @@ class PrependPath
 {
     protected $path;
 
-    public function __construct($path)
+    public function setPath($path)
     {
         $this->path = $path;
     }

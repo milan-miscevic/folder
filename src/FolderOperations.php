@@ -8,6 +8,17 @@ abstract class FolderOperations
     protected $files;
     protected $absolutePather;
 
+    public function __construct()
+    {
+        $this->absolutePather = new PrependPath();
+    }
+
+    protected function reset()
+    {
+        $this->folders = $this->files = null;
+        $this->absolutePather->setPath($this->getPath());
+    }
+
     protected function scanIfNotScanned()
     {
         if ($this->folders === null || $this->files === null) {
@@ -17,13 +28,10 @@ abstract class FolderOperations
 
     public function scan()
     {
-        $path = $this->getPath();
-
         $this->folders = [];
         $this->files = [];
-        $this->absolutePather = new PrependPath($path);
 
-        foreach (scandir($path) as $entry) {
+        foreach (scandir($this->getPath()) as $entry) {
             if (is_dir(($this->absolutePather)($entry))) {
                 $this->folders[] = $entry;
             } else {
@@ -54,11 +62,6 @@ abstract class FolderOperations
     public function getAbsoluteFiles()
     {
         return array_map($this->absolutePather, $this->getFiles());
-    }
-
-    protected function markUnscanned()
-    {
-        $this->folders = $this->files = null;
     }
 
     abstract public function getPath();
