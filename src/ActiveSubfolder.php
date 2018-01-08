@@ -17,19 +17,24 @@ class ActiveSubfolder extends FolderOperations
 
         $this->relativePather = new PrependPath();
 
-        $this->setBase($base);
-        $this->setCurrent($current);
+        $this->setRealBase($base);
+        $this->setRealCurrent($current);
+        $this->reset();
     }
 
     public function setBase($base)
+    {
+        $this->setRealBase($base);
+        $this->reset();
+    }
+
+    protected function setRealBase($base)
     {
         $this->base = realpath($base);
 
         if ($this->base === false) {
             throw new NotFoundException();
         }
-
-        $this->reset();
     }
 
     public function getBase()
@@ -38,6 +43,12 @@ class ActiveSubfolder extends FolderOperations
     }
 
     public function setCurrent($current)
+    {
+        $this->setRealCurrent($current);
+        $this->reset();
+    }
+
+    protected function setRealCurrent($current)
     {
         $path = realpath($this->base . DIRECTORY_SEPARATOR . $current);
 
@@ -50,8 +61,6 @@ class ActiveSubfolder extends FolderOperations
         }
 
         $this->current = (string) substr($path, strlen($this->base) + 1);
-
-        $this->reset();
     }
 
     public function getCurrent()
