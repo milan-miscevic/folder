@@ -78,6 +78,10 @@ class ActiveSubfolder extends FolderOperations
 
     public function getPath()
     {
+        if ($this->current === '') {
+            return $this->base;
+        }
+
         return $this->base . DIRECTORY_SEPARATOR . $this->current;
     }
 }
