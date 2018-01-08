@@ -24,10 +24,15 @@ class FolderTest extends TestCase
         $path = __DIR__ . DIRECTORY_SEPARATOR . $this->dummy1Folder;
 
         $af = new ActiveFolder($path);
-
         $this->assertEquals($af->getCurrent(), $path);
+
+        $af = new ActiveFolder($path);
         $this->assertEquals($af->getPath(), $path);
+
+        $af = new ActiveFolder($path);
         $this->assertEquals($af->getFolders(), array_combine($this->dummy1Folders, $this->dummy1Folders));
+
+        $af = new ActiveFolder($path);
         $this->assertEquals($af->getFiles(), array_combine($this->dummy1Files, $this->dummy1Files));
     }
 
@@ -44,11 +49,18 @@ class FolderTest extends TestCase
         $current = $this->subdummy1Folder;
 
         $asf = new ActiveSubFolder($base, $current);
-
         $this->assertEquals($asf->getBase(), $base);
+
+        $asf = new ActiveSubFolder($base, $current);
         $this->assertEquals($asf->getCurrent(), $current);
+
+        $asf = new ActiveSubFolder($base, $current);
         $this->assertEquals($asf->getPath(), $base . DIRECTORY_SEPARATOR . $current);
+
+        $asf = new ActiveSubFolder($base, $current);
         $this->assertEquals($asf->getFolders(), array_combine($this->subdummy1Folders, $this->subdummy1Folders));
+
+        $asf = new ActiveSubFolder($base, $current);
         $this->assertEquals($asf->getFiles(), array_combine($this->subdummy1Files, $this->subdummy1Files));
     }
 
