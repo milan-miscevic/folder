@@ -7,11 +7,11 @@ use Mmm\Folder\Exception\OutOfBaseException;
 
 class ActiveSubfolder extends FolderOperations
 {
-    protected $base;
-    protected $current;
+    protected $base = '.';
+    protected $current = '';
     protected $relativePather;
 
-    public function __construct($base = '.', $current = '.')
+    public function __construct($base = '.', $current = '')
     {
         parent::__construct();
 
