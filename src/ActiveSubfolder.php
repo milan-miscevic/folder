@@ -4,13 +4,10 @@ declare(strict_types=1);
 
 namespace Mmm\Folder;
 
-use Mmm\Folder\Exception\NotFoundException;
-use Mmm\Folder\Exception\OutOfBaseException;
-
 class ActiveSubfolder extends FolderOperations
 {
-    protected $base = '.';
-    protected $current = '';
+    protected $base;
+    protected $current;
     protected $relativePather;
 
     public function __construct($base = '.', $current = '')
@@ -35,7 +32,7 @@ class ActiveSubfolder extends FolderOperations
         $this->base = realpath($base);
 
         if ($this->base === false) {
-            throw new NotFoundException();
+            throw new Exception\NotFoundException();
         }
     }
 
@@ -55,11 +52,11 @@ class ActiveSubfolder extends FolderOperations
         $path = realpath($this->base . DIRECTORY_SEPARATOR . $current);
 
         if ($path === false) {
-            throw new NotFoundException();
+            throw new Exception\NotFoundException();
         }
 
         if (strpos($path, $this->base) !== 0) {
-            throw new OutOfBaseException();
+            throw new Exception\OutOfBaseException();
         }
 
         $this->current = (string) substr($path, strlen($this->base) + 1);

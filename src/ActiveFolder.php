@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Mmm\Folder;
 
-use Mmm\Folder\Exception\NotFoundException;
-
 class ActiveFolder extends FolderOperations
 {
     protected $current;
@@ -22,7 +20,7 @@ class ActiveFolder extends FolderOperations
         $this->current = realpath($current);
 
         if ($this->current === false) {
-            throw new NotFoundException();
+            throw new Exception\NotFoundException();
         }
 
         $this->reset();
