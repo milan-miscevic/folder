@@ -6,8 +6,13 @@ namespace Mmm\Folder;
 
 class ActiveSubfolder extends FolderOperations
 {
+    /** @var string */
     protected $base;
+
+    /** @var string */
     protected $current;
+
+    /** @var PrependPath */
     protected $relativePather;
 
     public function __construct(string $base = '.', string $current = '')

@@ -6,8 +6,13 @@ namespace Mmm\Folder;
 
 abstract class FolderOperations
 {
+    /** @var array */
     protected $folders;
+
+    /** @var array */
     protected $files;
+
+    /** @var PrependPath */
     protected $absolutePather;
 
     public function __construct()
