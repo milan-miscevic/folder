@@ -5,16 +5,14 @@ declare(strict_types=1);
 namespace MmmTest\Folder;
 
 use Mmm\Folder\ActiveFolder;
-use Mmm\Folder\ActiveSubFolder;
 use Mmm\Folder\Exception\NotFoundException;
-use Mmm\Folder\Exception\OutOfBaseException;
 use PHPUnit\Framework\TestCase;
 
 class ActiveFolderTest extends TestCase
 {
     use FolderFilesTrait;
 
-    public function testFolder()
+    public function testFolder(): void
     {
         $path = __DIR__ . DIRECTORY_SEPARATOR . $this->dummy1Folder;
 
@@ -31,7 +29,7 @@ class ActiveFolderTest extends TestCase
         $this->assertEquals($af->getFiles(), array_combine($this->dummy1Files, $this->dummy1Files));
     }
 
-    public function testNonFoundFolder()
+    public function testNonFoundFolder(): void
     {
         $this->expectException(NotFoundException::class);
 

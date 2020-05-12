@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace MmmTest\Folder;
 
-use Mmm\Folder\ActiveFolder;
 use Mmm\Folder\ActiveSubfolder;
 use Mmm\Folder\Exception\NotFoundException;
 use Mmm\Folder\Exception\OutOfBaseException;
@@ -14,7 +13,7 @@ class ActiveSubfolderTest extends TestCase
 {
     use FolderFilesTrait;
 
-    public function testSubFolder()
+    public function testSubFolder(): void
     {
         $base = __DIR__ . DIRECTORY_SEPARATOR . $this->dummy1Folder;
         $current = $this->subdummy1Folder;
@@ -35,14 +34,14 @@ class ActiveSubfolderTest extends TestCase
         $this->assertEquals($asf->getFiles(), array_combine($this->subdummy1Files, $this->subdummy1Files));
     }
 
-    public function testNotFoundSubFolder()
+    public function testNotFoundSubFolder(): void
     {
         $this->expectException(NotFoundException::class);
 
         $asf = new ActiveSubfolder(__DIR__, 'notFound');
     }
 
-    public function testOutOfBaseSubFolder()
+    public function testOutOfBaseSubFolder(): void
     {
         $this->expectException(OutOfBaseException::class);
 
