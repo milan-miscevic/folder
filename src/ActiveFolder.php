@@ -18,9 +18,11 @@ class ActiveFolder extends FolderOperations
 
     public function setCurrent(string $current): void
     {
-        $this->current = realpath($current);
+        $current = realpath($current);
 
-        if ($this->current === false) {
+        if ($current !== false) {
+            $this->current = $current;
+        } else {
             throw new Exception\NotFoundException();
         }
 

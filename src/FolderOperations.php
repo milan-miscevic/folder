@@ -6,10 +6,10 @@ namespace Mmm\Folder;
 
 abstract class FolderOperations
 {
-    /** @var array */
+    /** @var array|null */
     protected $folders;
 
-    /** @var array */
+    /** @var array|null */
     protected $files;
 
     /** @var PrependPath */
@@ -38,7 +38,13 @@ abstract class FolderOperations
         $this->folders = [];
         $this->files = [];
 
-        foreach (scandir($this->getPath()) as $entry) {
+        $entries = scandir($this->getPath());
+
+        if ($entries === false) {
+            throw new Exception\InvalidFolder();
+        }
+
+        foreach ($entries as $entry) {
             if (is_dir(($this->absolutePather)($entry))) {
                 $this->folders[$entry] = $entry;
             } else {

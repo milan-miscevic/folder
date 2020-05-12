@@ -34,9 +34,11 @@ class ActiveSubfolder extends FolderOperations
 
     protected function setRealBase(string $base): void
     {
-        $this->base = realpath($base);
+        $base = realpath($base);
 
-        if ($this->base === false) {
+        if ($base !== false) {
+            $this->base = $base;
+        } else {
             throw new Exception\NotFoundException();
         }
     }
