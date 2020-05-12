@@ -23,7 +23,7 @@ class ActiveFolder extends FolderOperations
         if ($current !== false) {
             $this->current = $current;
         } else {
-            throw new Exception\NotFoundException();
+            throw new Exception\FolderNotFound();
         }
 
         $this->reset();

@@ -39,7 +39,7 @@ class ActiveSubfolder extends FolderOperations
         if ($base !== false) {
             $this->base = $base;
         } else {
-            throw new Exception\NotFoundException();
+            throw new Exception\FolderNotFound();
         }
     }
 
@@ -59,11 +59,11 @@ class ActiveSubfolder extends FolderOperations
         $path = realpath($this->base . DIRECTORY_SEPARATOR . $current);
 
         if ($path === false) {
-            throw new Exception\NotFoundException();
+            throw new Exception\FolderNotFound();
         }
 
         if (strpos($path, $this->base) !== 0) {
-            throw new Exception\OutOfBaseException();
+            throw new Exception\OutOfBaseFolder();
         }
 
         $this->current = (string) substr($path, strlen($this->base) + 1);

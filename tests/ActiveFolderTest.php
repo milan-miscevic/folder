@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace MmmTest\Folder;
 
 use Mmm\Folder\ActiveFolder;
-use Mmm\Folder\Exception\NotFoundException;
+use Mmm\Folder\Exception\FolderNotFound;
 use PHPUnit\Framework\TestCase;
 
 class ActiveFolderTest extends TestCase
@@ -18,20 +18,14 @@ class ActiveFolderTest extends TestCase
 
         $af = new ActiveFolder($path);
         $this->assertEquals($af->getCurrent(), $path);
-
-        $af = new ActiveFolder($path);
         $this->assertEquals($af->getPath(), $path);
-
-        $af = new ActiveFolder($path);
         $this->assertEquals($af->getFolders(), array_combine($this->dummy1Folders, $this->dummy1Folders));
-
-        $af = new ActiveFolder($path);
         $this->assertEquals($af->getFiles(), array_combine($this->dummy1Files, $this->dummy1Files));
     }
 
     public function testNonFoundFolder(): void
     {
-        $this->expectException(NotFoundException::class);
+        $this->expectException(FolderNotFound::class);
 
         $af = new ActiveFolder(__DIR__ . DIRECTORY_SEPARATOR . 'notFound');
     }

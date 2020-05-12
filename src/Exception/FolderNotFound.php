@@ -6,6 +6,6 @@ namespace Mmm\Folder\Exception;
 
 use RuntimeException;
 
-class OutOfBaseException extends RuntimeException implements ExceptionInterface
+class FolderNotFound extends RuntimeException implements ExceptionInterface
 {
 }
