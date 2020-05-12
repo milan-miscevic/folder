@@ -38,7 +38,7 @@ abstract class FolderOperations
         $this->folders = [];
         $this->files = [];
 
-        $entries = scandir($this->getPath());
+        $entries = @scandir($this->getPath());
 
         if ($entries === false) {
             throw new Exception\InvalidFolder();

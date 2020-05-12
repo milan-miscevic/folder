@@ -19,7 +19,7 @@ trait FolderFilesTrait
     private $subdummy1Folder = 'subdummy1';
 
     /** @var array */
-    private $subdummy1Folders = [];
+    private $subdummy1Folders = ['subsubdummy1'];
 
     /** @var array */
     private $subdummy1Files = ['subdummy1.txt'];
