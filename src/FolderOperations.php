@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mmm\Folder;
 
 abstract class FolderOperations
