@@ -1,6 +1,6 @@
 # folder
 
-Folder (scanner) abstraction
+A folder scanner
 
 ## Usage
 
