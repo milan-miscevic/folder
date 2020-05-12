@@ -8,7 +8,7 @@ class PrependPath
 {
     protected $path;
 
-    public function setPath($path)
+    public function setPath(string $path): void
     {
         $this->path = $path;
 
@@ -17,7 +17,7 @@ class PrependPath
         }
     }
 
-    public function __invoke($entry)
+    public function __invoke(string $entry): string
     {
         return $this->path . $entry;
     }

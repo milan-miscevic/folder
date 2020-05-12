@@ -8,14 +8,14 @@ class ActiveFolder extends FolderOperations
 {
     protected $current;
 
-    public function __construct($current = '.')
+    public function __construct(string $current = '.')
     {
         parent::__construct();
 
         $this->setCurrent($current);
     }
 
-    public function setCurrent($current)
+    public function setCurrent(string $current): void
     {
         $this->current = realpath($current);
 
@@ -26,12 +26,12 @@ class ActiveFolder extends FolderOperations
         $this->reset();
     }
 
-    public function getCurrent()
+    public function getCurrent(): string
     {
         return $this->current;
     }
 
-    public function getPath()
+    public function getPath(): string
     {
         return $this->getCurrent();
     }

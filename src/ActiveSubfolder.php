@@ -10,7 +10,7 @@ class ActiveSubfolder extends FolderOperations
     protected $current;
     protected $relativePather;
 
-    public function __construct($base = '.', $current = '')
+    public function __construct(string $base = '.', string $current = '')
     {
         parent::__construct();
 
@@ -21,13 +21,13 @@ class ActiveSubfolder extends FolderOperations
         $this->reset();
     }
 
-    public function setBase($base)
+    public function setBase(string $base): void
     {
         $this->setRealBase($base);
         $this->reset();
     }
 
-    protected function setRealBase($base)
+    protected function setRealBase(string $base): void
     {
         $this->base = realpath($base);
 
@@ -36,18 +36,18 @@ class ActiveSubfolder extends FolderOperations
         }
     }
 
-    public function getBase()
+    public function getBase(): string
     {
         return $this->base;
     }
 
-    public function setCurrent($current)
+    public function setCurrent(string $current): void
     {
         $this->setRealCurrent($current);
         $this->reset();
     }
 
-    protected function setRealCurrent($current)
+    protected function setRealCurrent(string $current): void
     {
         $path = realpath($this->base . DIRECTORY_SEPARATOR . $current);
 
@@ -62,29 +62,29 @@ class ActiveSubfolder extends FolderOperations
         $this->current = (string) substr($path, strlen($this->base) + 1);
     }
 
-    public function getCurrent()
+    public function getCurrent(): string
     {
         return $this->current;
     }
 
-    protected function reset()
+    protected function reset(): void
     {
         parent::reset();
 
         $this->relativePather->setPath($this->current);
     }
 
-    public function getRelativeFolders()
+    public function getRelativeFolders(): array
     {
         return array_map($this->relativePather, $this->getFolders());
     }
 
-    public function getRelativeFiles()
+    public function getRelativeFiles(): array
     {
         return array_map($this->relativePather, $this->getFiles());
     }
 
-    public function getPath()
+    public function getPath(): string
     {
         if ($this->current === '') {
             return $this->base;

@@ -15,20 +15,20 @@ abstract class FolderOperations
         $this->absolutePather = new PrependPath();
     }
 
-    protected function reset()
+    protected function reset(): void
     {
         $this->folders = $this->files = null;
         $this->absolutePather->setPath($this->getPath());
     }
 
-    protected function scanIfNotScanned()
+    protected function scanIfNotScanned(): void
     {
         if ($this->folders === null || $this->files === null) {
             $this->scan();
         }
     }
 
-    public function scan()
+    public function scan(): void
     {
         $this->folders = [];
         $this->files = [];
@@ -45,29 +45,29 @@ abstract class FolderOperations
         unset($this->folders['..']);
     }
 
-    public function getFolders()
+    public function getFolders(): array
     {
         $this->scanIfNotScanned();
 
         return $this->folders;
     }
 
-    public function getAbsoluteFolders()
+    public function getAbsoluteFolders(): array
     {
         return array_map($this->absolutePather, $this->getFolders());
     }
 
-    public function getFiles()
+    public function getFiles(): array
     {
         $this->scanIfNotScanned();
 
         return $this->files;
     }
 
-    public function getAbsoluteFiles()
+    public function getAbsoluteFiles(): array
     {
         return array_map($this->absolutePather, $this->getFiles());
     }
 
-    abstract public function getPath();
+    abstract public function getPath(): string;
 }
