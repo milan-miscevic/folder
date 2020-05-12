@@ -1,6 +1,8 @@
 # folder
 
-A folder scanner
+[![Build Status](https://travis-ci.org/milan-miscevic/folder.svg?branch=master)](https://travis-ci.org/milan-miscevic/folder)
+
+A folder scanner.
 
 ## Usage
 
@@ -9,16 +11,16 @@ use Mmm\Folder\ActiveFolder;
 use Mmm\Folder\ActiveSubFolder;
 
 $af = new ActiveFolder(__DIR__);
-$af->getFolders(); // returns list of folders
-$af->getAbsoluteFolders(); // returns list of folders with absolute paths
-$af->getFiles(); // returns list of files
-$af->getAbsoluteFiles(); // returns list of files with absolute paths
+$af->getFolders(); // returns a list of folders
+$af->getAbsoluteFolders(); // returns a list of folders with absolute paths
+$af->getFiles(); // returns a list of files
+$af->getAbsoluteFiles(); // returns a list of files with absolute paths
 
 $asf = new ActiveSubFolder(__DIR__, '.');
 $asf->getFolders();
 $asf->getAbsoluteFolders();
-$asf->getRelativeFolders(); // returns list of folders with relative paths to base folder
+$asf->getRelativeFolders(); // returns a list of folders with relative paths to the base folder
 $asf->getFiles();
 $asf->getAbsoluteFiles();
-$asf->getRelativeFiles(); // returns list of files with relative paths to base folder
+$asf->getRelativeFiles(); // returns a list of files with relative paths to the base folder
 ```
