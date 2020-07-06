@@ -33,7 +33,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "MmmTest\\Folder\\": "tests/"
+            "Mmm\\Folder\\Tests\\": "tests/"
         }
     },
     "config": {

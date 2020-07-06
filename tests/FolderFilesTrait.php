@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MmmTest\Folder;
+namespace Mmm\Folder\Tests;
 
 trait FolderFilesTrait
 {

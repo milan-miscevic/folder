@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MmmTest\Folder;
+namespace Mmm\Folder\Tests;
 
 use Mmm\Folder\ActiveSubfolder;
 use Mmm\Folder\Exception\FolderNotFound;
