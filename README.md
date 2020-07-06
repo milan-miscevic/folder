@@ -1,5 +1,6 @@
 # folder
 
+[![PDS Skeleton](https://img.shields.io/badge/pds-skeleton-blue.svg?style=flat-square)](https://github.com/php-pds/skeleton)
 [![Build Status](https://travis-ci.org/milan-miscevic/folder.svg?branch=master)](https://travis-ci.org/milan-miscevic/folder)
 
 A folder scanner.

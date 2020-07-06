@@ -2,12 +2,27 @@
     "name": "milan-miscevic/folder",
     "description": "A folder scanner",
     "type": "library",
-    "keywords": ["scanner", "folder", "active-folder", "relative-path", "absolute-path", "folders", "files"],
+    "keywords": [
+        "scanner",
+        "folder",
+        "active-folder",
+        "relative-path",
+        "absolute-path",
+        "folders",
+        "files"
+    ],
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Milan Miščević",
+            "email": "milan.miscevic@gmail.com"
+        }
+    ],
     "require": {
         "php": "^7.2"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2",
         "phpstan/phpstan": "^0.12",
         "phpunit/phpunit": "^8"
     },
@@ -21,10 +36,13 @@
             "MmmTest\\Folder\\": "tests/"
         }
     },
+    "config": {
+        "sort-packages": true
+    },
     "scripts": {
         "coverage": "phpunit --coverage-text",
         "fix": "php-cs-fixer fix",
-        "stan": "phpstan analyse",
+        "phpstan": "phpstan analyse",
         "test": "phpunit"
     }
 }
