@@ -6,10 +6,10 @@ namespace Mmm\Folder;
 
 abstract class FolderOperations
 {
-    /** @var array|null */
+    /** @var array<string, string>|null */
     protected $folders;
 
-    /** @var array|null */
+    /** @var array<string, string>|null */
     protected $files;
 
     /** @var PrependPath */
@@ -56,6 +56,9 @@ abstract class FolderOperations
         unset($this->folders['..']);
     }
 
+    /**
+     * @return array<string, string>
+     */
     public function getFolders(): array
     {
         $this->scanIfNotScanned();
@@ -63,11 +66,17 @@ abstract class FolderOperations
         return $this->folders;
     }
 
+    /**
+     * @return array<string, string>
+     */
     public function getAbsoluteFolders(): array
     {
         return array_map($this->absolutePather, $this->getFolders());
     }
 
+    /**
+     * @return array<string, string>
+     */
     public function getFiles(): array
     {
         $this->scanIfNotScanned();
@@ -75,6 +84,9 @@ abstract class FolderOperations
         return $this->files;
     }
 
+    /**
+     * @return array<string, string>
+     */
     public function getAbsoluteFiles(): array
     {
         return array_map($this->absolutePather, $this->getFiles());

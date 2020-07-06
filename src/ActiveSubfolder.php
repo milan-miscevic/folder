@@ -81,11 +81,17 @@ class ActiveSubfolder extends FolderOperations
         $this->relativePather->setPath($this->current);
     }
 
+    /**
+     * @return array<string, string>
+     */
     public function getRelativeFolders(): array
     {
         return array_map($this->relativePather, $this->getFolders());
     }
 
+    /**
+     * @return array<string, string>
+     */
     public function getRelativeFiles(): array
     {
         return array_map($this->relativePather, $this->getFiles());
