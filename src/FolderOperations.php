@@ -6,11 +6,14 @@ namespace Mmm\Folder;
 
 abstract class FolderOperations
 {
-    /** @var array<string, string>|null */
-    protected $folders;
+    /** @var bool */
+    protected $scanned = false;
 
-    /** @var array<string, string>|null */
-    protected $files;
+    /** @var array<string, string> */
+    protected $folders = [];
+
+    /** @var array<string, string> */
+    protected $files = [];
 
     /** @var PrependPath */
     protected $absolutePather;
@@ -22,14 +25,16 @@ abstract class FolderOperations
 
     protected function reset(): void
     {
-        $this->folders = $this->files = null;
+        $this->folders = $this->files = [];
+        $this->scanned = false;
         $this->absolutePather->setPath($this->getPath());
     }
 
     protected function scanIfNotScanned(): void
     {
-        if ($this->folders === null || $this->files === null) {
+        if (!$this->scanned) {
             $this->scan();
+            $this->scanned = true;
         }
     }
 
@@ -54,6 +59,8 @@ abstract class FolderOperations
 
         unset($this->folders['.']);
         unset($this->folders['..']);
+
+        $this->scanned = true;
     }
 
     /**
