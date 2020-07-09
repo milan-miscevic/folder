@@ -2,6 +2,8 @@
 
 [![PDS Skeleton](https://img.shields.io/badge/pds-skeleton-blue.svg?style=flat-square)](https://github.com/php-pds/skeleton)
 [![Build Status](https://travis-ci.org/milan-miscevic/folder.svg?branch=master)](https://travis-ci.org/milan-miscevic/folder)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=milan-miscevic_folder&metric=alert_status)](https://sonarcloud.io/dashboard?id=milan-miscevic_folder)
+[![Software License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 A folder scanner.
 
