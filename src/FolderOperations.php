@@ -30,14 +30,6 @@ abstract class FolderOperations
         $this->absolutePather->setPath($this->getPath());
     }
 
-    protected function scanIfNotScanned(): void
-    {
-        if (!$this->scanned) {
-            $this->scan();
-            $this->scanned = true;
-        }
-    }
-
     public function scan(): void
     {
         $this->folders = [];
@@ -68,7 +60,9 @@ abstract class FolderOperations
      */
     public function getFolders(): array
     {
-        $this->scanIfNotScanned();
+        if (!$this->scanned) {
+            $this->scan();
+        }
 
         return $this->folders;
     }
@@ -86,7 +80,9 @@ abstract class FolderOperations
      */
     public function getFiles(): array
     {
-        $this->scanIfNotScanned();
+        if (!$this->scanned) {
+            $this->scan();
+        }
 
         return $this->files;
     }
