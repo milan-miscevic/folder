@@ -93,20 +93,20 @@ class ActiveSubfolderTest extends TestCase
     {
         $this->expectException(FolderNotFound::class);
 
-        $asf = new ActiveSubfolder('notFound');
+        new ActiveSubfolder('notFound');
     }
 
     public function testCurrentFolderNotFound(): void
     {
         $this->expectException(FolderNotFound::class);
 
-        $asf = new ActiveSubfolder(__DIR__, 'notFound');
+        new ActiveSubfolder(__DIR__, 'notFound');
     }
 
     public function testOutOfBaseFolder(): void
     {
         $this->expectException(OutOfBaseFolder::class);
 
-        $asf = new ActiveSubfolder(__DIR__, '..');
+        new ActiveSubfolder(__DIR__, '..');
     }
 }

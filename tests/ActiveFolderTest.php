@@ -28,7 +28,7 @@ class ActiveFolderTest extends TestCase
     {
         $this->expectException(FolderNotFound::class);
 
-        $af = new ActiveFolder(__DIR__ . DIRECTORY_SEPARATOR . 'notFound');
+        new ActiveFolder(__DIR__ . DIRECTORY_SEPARATOR . 'notFound');
     }
 
     public function testInvalidFolder(): void
