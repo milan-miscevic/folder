@@ -1,17 +1,17 @@
 {
     "name": "milan-miscevic/folder",
-    "description": "A folder scanner",
+    "description": "Folder scanner",
+    "license": "MIT",
     "type": "library",
     "keywords": [
-        "scanner",
-        "folder",
-        "active-folder",
-        "relative-path",
         "absolute-path",
+        "active-folder",
+        "files",
+        "folder",
         "folders",
-        "files"
+        "relative-path",
+        "scanner"
     ],
-    "license": "MIT",
     "authors": [
         {
             "name": "Milan Miščević",
@@ -19,12 +19,15 @@
         }
     ],
     "require": {
-        "php": "^7.2"
+        "php": "^7.4 || ^8"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2 || ^3",
-        "phpstan/phpstan": "^0.12 || ^1.0",
-        "phpunit/phpunit": "^8"
+        "friendsofphp/php-cs-fixer": "^3.7.0",
+        "infection/infection": "^0.26.6",
+        "phpstan/phpstan": "^1.4.9",
+        "phpstan/phpstan-strict-rules": "^1.1",
+        "phpunit/phpunit": "^9.5.18",
+        "vimeo/psalm": "^4.22.0"
     },
     "autoload": {
         "psr-4": {
@@ -37,12 +40,7 @@
         }
     },
     "config": {
+        "allow-plugins": {},
         "sort-packages": true
-    },
-    "scripts": {
-        "coverage": "phpunit --coverage-text",
-        "fix": "php-cs-fixer fix",
-        "phpstan": "phpstan analyse",
-        "test": "phpunit"
     }
 }
