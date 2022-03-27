@@ -1,0 +1,97 @@
+name: "Test"
+
+on:
+  pull_request:
+    branches:
+      - "master"
+  push:
+    branches:
+      - "master"
+
+jobs:
+  mutation:
+    name: "Infection mutation testing"
+    runs-on: "ubuntu-latest"
+
+    strategy:
+      matrix:
+        php-version:
+          - "8.1"
+
+    steps:
+      - uses: "shivammathur/setup-php@2.9.0"
+        with:
+          php-version: "${{ matrix.php-version }}"
+      - uses: "actions/checkout@v2"
+      - uses: "php-actions/composer@v1"
+      - run: "vendor/bin/infection --min-msi=80"
+
+  phpstan:
+    name: "PHPStan static analysis"
+    runs-on: "ubuntu-latest"
+
+    strategy:
+      matrix:
+        php-version:
+          - "8.1"
+
+    steps:
+      - uses: "shivammathur/setup-php@2.9.0"
+        with:
+          php-version: "${{ matrix.php-version }}"
+      - uses: "actions/checkout@v2"
+      - uses: "php-actions/composer@v1"
+      - run: "vendor/bin/phpstan analyse"
+
+  psalm:
+    name: "Psalm static analysis"
+    runs-on: "ubuntu-latest"
+
+    strategy:
+      matrix:
+        php-version:
+          - "8.1"
+
+    steps:
+      - uses: "shivammathur/setup-php@2.9.0"
+        with:
+          php-version: "${{ matrix.php-version }}"
+      - uses: "actions/checkout@v2"
+      - uses: "php-actions/composer@v1"
+      - run: "vendor/bin/psalm --show-info=true --shepherd"
+
+  standards:
+    name: "PHP-CS-Fixer coding standards"
+    runs-on: "ubuntu-latest"
+
+    strategy:
+      matrix:
+        php-version:
+          - "8.1"
+
+    steps:
+      - uses: "shivammathur/setup-php@2.9.0"
+        with:
+          php-version: "${{ matrix.php-version }}"
+      - uses: "actions/checkout@v2"
+      - uses: "php-actions/composer@v1"
+      - run: "vendor/bin/php-cs-fixer fix --dry-run -v"
+
+  unit:
+    name: "PHPUnit unit tests"
+    runs-on: "ubuntu-latest"
+
+    strategy:
+      matrix:
+        php-version:
+          - "7.4"
+          - "8.0"
+          - "8.1"
+
+    steps:
+      - uses: "shivammathur/setup-php@2.9.0"
+        with:
+          php-version: "${{ matrix.php-version }}"
+      - uses: "actions/checkout@v2"
+      - uses: "php-actions/composer@v1"
+      - run: "vendor/bin/phpunit"
