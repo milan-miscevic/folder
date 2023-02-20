@@ -6,17 +6,15 @@ namespace Mmm\Folder;
 
 abstract class FolderOperations
 {
-    /** @var bool */
-    protected $scanned = false;
+    protected bool $scanned = false;
 
     /** @var array<string, string> */
-    protected $folders = [];
+    protected array $folders = [];
 
     /** @var array<string, string> */
-    protected $files = [];
+    protected array $files = [];
 
-    /** @var PrependPath */
-    protected $absolutePather;
+    protected PrependPath $absolutePather;
 
     public function __construct()
     {
