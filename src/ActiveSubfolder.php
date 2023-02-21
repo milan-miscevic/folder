@@ -66,7 +66,7 @@ class ActiveSubfolder extends FolderOperations
             throw new Exception\OutOfBaseFolder();
         }
 
-        $this->current = (string) substr($path, strlen($this->base) + 1);
+        $this->current = substr($path, strlen($this->base) + 1);
     }
 
     public function getCurrent(): string
