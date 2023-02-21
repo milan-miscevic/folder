@@ -12,12 +12,10 @@ jobs:
   mutation:
     name: "Infection mutation testing"
     runs-on: "ubuntu-latest"
-
     strategy:
       matrix:
         php-version:
-          - "8.1"
-
+          - "8.0"
     steps:
       - uses: "shivammathur/setup-php@2.9.0"
         with:
@@ -31,12 +29,10 @@ jobs:
   phpstan:
     name: "PHPStan static analysis"
     runs-on: "ubuntu-latest"
-
     strategy:
       matrix:
         php-version:
-          - "8.1"
-
+          - "8.0"
     steps:
       - uses: "shivammathur/setup-php@2.9.0"
         with:
@@ -48,12 +44,10 @@ jobs:
   psalm:
     name: "Psalm static analysis"
     runs-on: "ubuntu-latest"
-
     strategy:
       matrix:
         php-version:
-          - "8.1"
-
+          - "8.0"
     steps:
       - uses: "shivammathur/setup-php@2.9.0"
         with:
@@ -65,12 +59,10 @@ jobs:
   standards:
     name: "PHP-CS-Fixer coding standards"
     runs-on: "ubuntu-latest"
-
     strategy:
       matrix:
         php-version:
-          - "8.1"
-
+          - "8.0"
     steps:
       - uses: "shivammathur/setup-php@2.9.0"
         with:
@@ -82,14 +74,12 @@ jobs:
   unit:
     name: "PHPUnit unit tests"
     runs-on: "ubuntu-latest"
-
     strategy:
       matrix:
         php-version:
-          - "7.4"
           - "8.0"
           - "8.1"
-
+          - "8.2"
     steps:
       - uses: "shivammathur/setup-php@2.9.0"
         with:

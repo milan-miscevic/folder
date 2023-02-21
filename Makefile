@@ -1,5 +1,5 @@
 DOCKER=docker-compose -f ./docker/docker-compose.yml
-PHP=php81-cli
+PHP=php80-cli
 
 cli:
 	$(DOCKER) run $(PHP) bash
@@ -29,6 +29,6 @@ standards:
 test: standards unit phpstan psalm mutation
 
 unit:
-	$(DOCKER) run --rm php74-cli ./vendor/bin/phpunit
-	$(DOCKER) run --rm php80-cli ./vendor/bin/phpunit
 	$(DOCKER) run --rm $(PHP) ./vendor/bin/phpunit
+	$(DOCKER) run --rm php81-cli ./vendor/bin/phpunit
+	$(DOCKER) run --rm php82-cli ./vendor/bin/phpunit
