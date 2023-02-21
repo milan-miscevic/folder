@@ -6,8 +6,7 @@ namespace Mmm\Folder;
 
 class ActiveFolder extends FolderOperations
 {
-    /** @var string */
-    protected $current;
+    protected string $current;
 
     public function __construct(string $current = '.')
     {

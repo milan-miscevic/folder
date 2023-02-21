@@ -6,8 +6,7 @@ namespace Mmm\Folder;
 
 class PrependPath
 {
-    /** @var string */
-    protected $path;
+    protected string $path;
 
     public function setPath(string $path): void
     {
