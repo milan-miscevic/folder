@@ -1,6 +1,9 @@
 DOCKER=docker-compose -f ./docker/docker-compose.yml
 PHP=php81-cli
 
+cli:
+	$(DOCKER) run $(PHP) bash
+
 coverage:
 	$(DOCKER) run --rm $(PHP) php -dxdebug.mode=coverage ./vendor/bin/phpunit --coverage-text
 
